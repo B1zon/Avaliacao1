@@ -6,7 +6,7 @@ package utfpr.ct.dainf.if62c.avaliacao;
  * IF62C - Fundamentos de Programação 2
  * 
  * Primeira avaliação parcial 2014/2.
- * @author 
+ * @author Gabriel Rodrigues Garcia <b1zon@hotmail.com>
  */
 public class Complexo {
     private double real;
