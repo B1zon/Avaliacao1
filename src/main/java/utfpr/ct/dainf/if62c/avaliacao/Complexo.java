@@ -16,30 +16,70 @@ public class Complexo {
     }
 
     public Complexo(double real, double img) {
-        // completar a implementação
+        this.real = real;
+        this.img = img;
     }
 
-    // implementar getReal()
+    public double getReal(){
+        return real;
+    }
 
-    // implementar getImg()
+    public double getImg(){
+        return img;
+    }
 
     public Complexo soma(Complexo c) {
         return new Complexo(real + c.real, img + c.img);
     }
     
-    // implementar sub(Complexo)
+    public Complexo sub(Complexo c){
+        return new Complexo(real - c.real, img - c.img); 
+    }
 
-    // implementar prod(double)
+    public Complexo prod(double x){
+        return new Complexo(real * x, img * x);
+    }
 
-    // implementar prod(Complexo)
+    public Complexo prod(Complexo c){
+        return new Complexo(real * c.real, img * c.img);
+    }
     
-    // implementar div(Complexo)
+    public Complexo div(Complexo c){
+        return new Complexo(((real*c.real + img*c.img)/(((c.real)*(c.real))+((c.img)*(c.img)))),
+                            ((c.real*img - real*c.img)/(((c.real)*(c.real))+((c.img)*(c.img)))));
+    }
     
-    // implementar sqrt()
     public Complexo[] sqrt() {
-        // completar implementação
-        // retornar o vetor contendo as raízes
-        return null;
+           
+           Complexo[]c = new Complexo[2];
+           
+           double r = Math.sqrt(real*real + img*img);
+           double phi = Math.sqrt(r);
+           double another = 0, num1, num2;
+           
+           if(real>0){
+              another = Math.atan(img/real);    
+           }
+           if(real<0){
+              another = Math.atan(img/real)+Math.PI;
+           }
+           if(real == 0 && img == 0){
+               another = 0;
+           }
+           if(real == 0 && img > 0){
+               another = (Math.PI)/2;
+           }
+           if(real == 0 && img < 0){
+               another = (3*(Math.PI))/2;
+           }
+           
+           num1 = another/2;
+           num2 = (another/2)+Math.PI;
+          
+          c[0] = new Complexo(phi*Math.cos(num1),phi*Math.sin(num1));
+          c[1] = new Complexo(phi*Math.cos(num2),phi*Math.sin(num2));
+          
+        return c;
     }
 
     @Override
